@@ -1,0 +1,20 @@
+import base64
+
+def create_basic_auth_header(username, password):
+    # Combine the username and password with a colon
+    credentials = f"{username}:{password}"
+
+    # Encode the credentials in Base64
+    base64_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf-8')
+
+    # Create the authorization header value
+    auth_header = f"Basic {base64_credentials}"
+
+    return auth_header
+
+# Example usage:
+username = input("Enter your username: ")
+password = input("Enter your password: ")
+
+authorization_header = create_basic_auth_header(username, password)
+print("Authorization Header:", authorization_header)
